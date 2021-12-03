@@ -1,0 +1,34 @@
+
+https://grappelliproject.com/
+//--------------------------------
+python manage.py runserver
+//--------------------------------
+python manage.py createsuperuser
+//--------------------------------
+
+SQL
+//--------------------------------
+python manage.py shell
+from articles.models import Article, Comment
+//--------------------------------
+Article.objects.all()							// достать все статьи
+//--------------------------------
+a = Article.objects.get(id = 1)
+a.was_published_recently()
+//--------------------------------
+from django.utils import timezone
+a = Article(article_title = "Какая-то крутая статья", article_text = "Какой-то крутой текст ...", pub_date = timezone.now())
+a.save()
+//--------------------------------
+a.article_title
+a.article_text
+a.pub_date
+//--------------------------------
+a.article_title = "Как прошить PS3?"
+a.save()
+//--------------------------------
+a.comment_set.all()								// достать все коментарии статьи
+a.comment_set.create( author_name = "Джон", comment_text = "Крутая статья" )
+a.comment_set.count()
+//--------------------------------
+quit()
